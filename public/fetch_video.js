@@ -15,11 +15,15 @@ $(document).ready(function() {
       ajaxCall();
     }
   });
+})
 
   function ajaxCall() {
-    
-    // your code will go here
+    var input = $('#text-field').val()
 
-  }
-
-});
+    $.ajax({
+      url: "/widget",
+      data: { search_keyword: input }
+    }).success(function(youtubeData) {
+        $("#search-results").html(youtubeData)
+  })
+}

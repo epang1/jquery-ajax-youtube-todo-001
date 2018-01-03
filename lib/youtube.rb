@@ -5,9 +5,7 @@ class YouTube
   attr_reader :search_term, :videos
 
   def initialize(search_term)
-    Yt.configure do |config|
-      config.api_key = ENV['DEVELOPER_KEY']
-    end
+    Yt.configure {|config| config.api_key = ENV['DEVELOPER_KEY'] }
     @search_term = search_term
     @videos = Yt::Collections::Videos.new
   end
